@@ -103,6 +103,7 @@ section.right-side p {
 
 .window .topbar .buttons .yellow {
     background-color: #ffbd4c;
+
 }
 
 .window .topbar .buttons .yellow:active {
@@ -125,6 +126,7 @@ section.right-side p {
     display: block;
     width: 100%;
     height: 100%;
+    
 }
 .window .content #current-word {
     font-size: 35px;
