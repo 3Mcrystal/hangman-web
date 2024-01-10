@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+{{ template "head" . }}
+<body>
+    <h1 class="text-center" >Hangman-web</h1>
+
+    <div class="window">
+        <div class="topbar">
+            <div class="title text-center">
+                Hangman web - Leaderboard
+            </div>
+            <div class="buttons">
+                <div class="green">
+                    <a class="clickable" href="https://pastebin.com/n6WxkLZK" target="_blank"></a>
+                </div>
+                <div class="yellow">
+                    <a class="clickable" href="https://pastebin.com/gr5eQ5cE" target="_blank"></a>
+                </div>
+                <div class="red">
+                    <a class="clickable" href="https://pastebin.com/nDedRCgX" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <ol class="scoreboard">
+                {{range .Scores}}
+                <div class="score-line">
+                    <p class="name">{{index . 0}}</p>
+                    <p class="score">{{index . 1}}</p>
+                </div>
+                {{end}}
+            </ol>
+            <p class="text-center"><a href="/">Go Back</a></p>
+        </div>
+    </div>
+    <div class="bottom">
+	</div>
+</body>
+</html>

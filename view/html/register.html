@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+{{ template "head" . }}
+<body>
+    <h1 class="text-center">Hangman-web</h1>
+
+    <div class="window">
+		<div class="topbar">
+			<div class="title text-center">
+				Hangman web - User register
+			</div>
+			<div class="buttons">
+				<div class="green">
+					<a class="clickable" href="https://pastebin.com/n6WxkLZK" target="_blank"></a>
+				</div>
+				<div class="yellow">
+					<a class="clickable" href="https://pastebin.com/gr5eQ5cE" target="_blank"></a>
+				</div>
+				<div class="red">
+					<a class="clickable" href="https://pastebin.com/nDedRCgX" target="_blank"></a>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+            <p class="text-center">Choisissez votre nom d'utilisateur</p>
+            <form action="/register" method="POST">
+                <label for="username">-> </label>
+                <input class="entry" type="text" id="username" name="username" autofocus />
+                <input class="button" type="submit" value="Envoyer" />
+            </form>
+            <p>{{ .Error }}</p>
+        </div>
+    </div>
+    <div class="bottom">
+	</div>
+</body>
+</html>

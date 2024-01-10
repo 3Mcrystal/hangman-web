@@ -1,22 +1,28 @@
 package main
 
 import (
-	"html/template"
-	"log"
+	"fmt"
+	hangmanweb "hangmanweb/controller"
 	"net/http"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
-	template, err := template.ParseFiles("./index.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-	template.Execute(w, nil)
-}
-
 func main() {
-	http.HandleFunc("/", Home)
-	fs := http.FileServer(http.Dir("static/"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
-	http.ListenAndServe(":8080", nil)
+	hangmanweb.RandInit()
+	players := hangmanweb.Players{Users: map[string]*hangmanweb.UserData{}, Scores: [][]string{}}
+	players.Scores = hangmanweb.Load()
+
+	fsCss := http.FileServer(http.Dir("./view/assets"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", fsCss))
+
+	http.HandleFunc("/", players.IndexHandler)
+	http.HandleFunc("/register", players.Register)
+	http.HandleFunc("/hangman", players.HangmanHandler)
+	http.HandleFunc("/reset", players.ResetHandler)
+	http.HandleFunc("/leaderboard", players.LeaderBoardHandler)
+
+	fmt.Println("[INFO] - Starting the server...")
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("[ERROR] - Server could not start properly.\n ", err)
+	}
 }
