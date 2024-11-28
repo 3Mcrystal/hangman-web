@@ -21,7 +21,7 @@ To launch the project,
 1. Clone the project:
 
     ```bash
-    https://ytrack.learn.ynov.com/git/gyael/hangman-web
+    https://github.com/3Mcrystal/hangman-web.git
     ```
 
 2. Change into the project directory:
